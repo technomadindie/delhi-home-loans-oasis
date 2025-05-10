@@ -76,15 +76,15 @@ const Index = () => {
                 <ul className="space-y-3">
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-finance-teal mr-2" />
-                    <span>Instant and accurate calculation</span>
+                    <span>{t('instantCalculation')}</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-finance-teal mr-2" />
-                    <span>Customize all loan parameters</span>
+                    <span>{t('customizeParams')}</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-finance-teal mr-2" />
-                    <span>See how changes affect your EMI</span>
+                    <span>{t('seeChanges')}</span>
                   </li>
                 </ul>
               </div>
@@ -101,9 +101,9 @@ const Index = () => {
         {/* Call to Action */}
         <section className="py-20 px-4 gradient-bg">
           <div className="container mx-auto text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Home Loan Journey?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('readyToStart')}</h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-              Contact us today to speak with one of our home loan experts and get personalized assistance.
+              {t('contactUsToday')}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a 
@@ -116,7 +116,7 @@ const Index = () => {
                 href="tel:+919876543210" 
                 className="border border-white text-white hover:bg-white/10 px-8 py-3 rounded-md font-semibold transition-colors"
               >
-                Call +91 98765 43210
+                {t('callNow')}
               </a>
             </div>
           </div>

@@ -7,9 +7,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactUs = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -59,9 +61,9 @@ const ContactUs = () => {
           
           <div className="container mx-auto relative z-10">
             <div className="max-w-3xl mx-auto text-center text-white">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('contactUsHero')}</h1>
               <p className="text-xl opacity-90">
-                Get in touch with our team for any queries or assistance with home loans.
+                {t('contactUsSubtitle')}
               </p>
             </div>
           </div>
@@ -73,13 +75,13 @@ const ContactUs = () => {
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
               {/* Contact Form */}
               <div className="lg:col-span-3 bg-white p-8 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold mb-6 text-finance-blue">Send Us a Message</h2>
+                <h2 className="text-2xl font-bold mb-6 text-finance-blue">{t('sendUsMessage')}</h2>
                 
                 <form onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Full Name*
+                        {t('fullName')}
                       </label>
                       <Input
                         id="name"
@@ -87,14 +89,14 @@ const ContactUs = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="Your name"
+                        placeholder={t('name')}
                         className="w-full"
                       />
                     </div>
                     
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address*
+                        {t('emailAddress')}
                       </label>
                       <Input
                         id="email"
@@ -112,7 +114,7 @@ const ContactUs = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                        Phone Number*
+                        {t('phoneNumber')}
                       </label>
                       <Input
                         id="phone"
@@ -120,14 +122,14 @@ const ContactUs = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        placeholder="Your contact number"
+                        placeholder={t('phone')}
                         className="w-full"
                       />
                     </div>
                     
                     <div>
                       <label htmlFor="propertyArea" className="block text-sm font-medium text-gray-700 mb-1">
-                        Property Area*
+                        {t('propertyAreaLabel')}
                       </label>
                       <Input
                         id="propertyArea"
@@ -135,7 +137,7 @@ const ContactUs = () => {
                         value={formData.propertyArea}
                         onChange={handleChange}
                         required
-                        placeholder="Where are you thinking of buying?"
+                        placeholder={t('propertyAreaPlaceholder')}
                         className="w-full"
                       />
                     </div>
@@ -143,7 +145,7 @@ const ContactUs = () => {
                   
                   <div className="mb-6">
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Message*
+                      {t('messageLabel')}
                     </label>
                     <Textarea
                       id="message"
@@ -151,7 +153,7 @@ const ContactUs = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      placeholder="Tell us about your requirements"
+                      placeholder={t('messagePlaceholder')}
                       className="w-full min-h-[120px]"
                     />
                   </div>
@@ -161,7 +163,7 @@ const ContactUs = () => {
                     className="w-full bg-finance-blue hover:bg-finance-blue-light"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? t('sending') : t('sendMessage')}
                   </Button>
                 </form>
               </div>
@@ -169,7 +171,7 @@ const ContactUs = () => {
               {/* Contact Information */}
               <div className="lg:col-span-2">
                 <div className="bg-finance-blue text-white p-8 rounded-lg shadow-md h-full">
-                  <h2 className="text-2xl font-bold mb-8">Contact Information</h2>
+                  <h2 className="text-2xl font-bold mb-8">{t('contactInformation')}</h2>
                   
                   <div className="space-y-8">
                     <div className="flex items-start">
@@ -177,7 +179,7 @@ const ContactUs = () => {
                         <Phone className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg">Phone</h3>
+                        <h3 className="font-semibold text-lg">{t('phone')}</h3>
                         <p className="text-gray-200 mt-1">+91 98765 43210</p>
                         <p className="text-gray-200">+91 98765 43211</p>
                       </div>
@@ -188,7 +190,7 @@ const ContactUs = () => {
                         <Mail className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg">Email</h3>
+                        <h3 className="font-semibold text-lg">{t('email')}</h3>
                         <p className="text-gray-200 mt-1">info@homeloanexpress.com</p>
                         <p className="text-gray-200">support@homeloanexpress.com</p>
                       </div>
@@ -199,7 +201,7 @@ const ContactUs = () => {
                         <MapPin className="h-6 w-6" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg">Office Address</h3>
+                        <h3 className="font-semibold text-lg">{t('officeAddress')}</h3>
                         <p className="text-gray-200 mt-1">
                           123 Finance Street, Connaught Place, New Delhi, 110001
                         </p>
@@ -207,9 +209,9 @@ const ContactUs = () => {
                     </div>
                     
                     <div>
-                      <h3 className="font-semibold text-lg mb-2">Business Hours</h3>
-                      <p className="text-gray-200">Monday - Saturday: 10:00 AM - 7:00 PM</p>
-                      <p className="text-gray-200">Sunday: Closed</p>
+                      <h3 className="font-semibold text-lg mb-2">{t('businessHours')}</h3>
+                      <p className="text-gray-200">{t('businessHoursWeekday')}</p>
+                      <p className="text-gray-200">{t('businessHoursSunday')}</p>
                     </div>
                   </div>
                 </div>
@@ -221,11 +223,11 @@ const ContactUs = () => {
         {/* Map Section */}
         <section className="py-20 px-4 bg-gray-50">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center text-finance-blue">Our Location</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center text-finance-blue">{t('ourLocation')}</h2>
             <div className="bg-white p-4 rounded-lg shadow-md">
               <div className="aspect-[16/9] bg-gray-200 rounded-md flex items-center justify-center">
                 <p className="text-gray-500 text-center p-10">
-                  Map Placeholder - Google Maps would be embedded here showing location in Delhi-NCR
+                  {t('mapPlaceholder')}
                 </p>
               </div>
             </div>
@@ -236,26 +238,26 @@ const ContactUs = () => {
         <section className="py-20 px-4">
           <div className="container mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center text-finance-blue">
-              Frequently Asked Questions
+              {t('faq')}
             </h2>
             
             <div className="max-w-3xl mx-auto grid gap-6">
               {[
                 {
-                  question: "What documents are required for a home loan application?",
-                  answer: "Typically, you'll need identity proof, address proof, income proof (salary slips or tax returns), property documents, and bank statements for the last 6 months."
+                  question: t('faqDocuments'),
+                  answer: t('faqDocumentsAnswer')
                 },
                 {
-                  question: "How long does the loan approval process take?",
-                  answer: "Our loan approval process usually takes 3-7 business days once all documents are submitted. We work to expedite the process for our clients."
+                  question: t('faqApproval'),
+                  answer: t('faqApprovalAnswer')
                 },
                 {
-                  question: "What is the minimum credit score required for a home loan?",
-                  answer: "Most of our partner banks require a minimum credit score of 700, though some options may be available for scores between 650-700."
+                  question: t('faqCreditScore'),
+                  answer: t('faqCreditScoreAnswer')
                 },
                 {
-                  question: "Do you charge any fees for your services?",
-                  answer: "Our initial consultation and basic services are free. We may charge processing fees for specialized services, which will be clearly communicated upfront."
+                  question: t('faqFees'),
+                  answer: t('faqFeesAnswer')
                 }
               ].map((faq, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg shadow-md">
