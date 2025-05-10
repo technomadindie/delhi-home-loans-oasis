@@ -14,6 +14,7 @@ const ContactUs = () => {
     name: "",
     email: "",
     phone: "",
+    propertyArea: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,6 +41,7 @@ const ContactUs = () => {
         name: "",
         email: "",
         phone: "",
+        propertyArea: "",
         message: "",
       });
       setIsSubmitting(false);
@@ -107,19 +109,36 @@ const ContactUs = () => {
                     </div>
                   </div>
                   
-                  <div className="mb-6">
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                      Phone Number*
-                    </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      placeholder="Your contact number"
-                      className="w-full"
-                    />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                        Phone Number*
+                      </label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                        placeholder="Your contact number"
+                        className="w-full"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="propertyArea" className="block text-sm font-medium text-gray-700 mb-1">
+                        Property Area*
+                      </label>
+                      <Input
+                        id="propertyArea"
+                        name="propertyArea"
+                        value={formData.propertyArea}
+                        onChange={handleChange}
+                        required
+                        placeholder="Where are you thinking of buying?"
+                        className="w-full"
+                      />
+                    </div>
                   </div>
                   
                   <div className="mb-6">
