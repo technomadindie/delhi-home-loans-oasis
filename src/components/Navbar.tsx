@@ -3,9 +3,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <nav className="bg-white shadow-sm py-4 sticky top-0 z-50">
@@ -18,14 +21,16 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-gray-700 hover:text-finance-blue font-medium">Home</Link>
-            <Link to="/about-us" className="text-gray-700 hover:text-finance-blue font-medium">About Us</Link>
-            <Link to="/contact-us" className="text-gray-700 hover:text-finance-blue font-medium">Contact Us</Link>
-            <Button className="bg-finance-blue hover:bg-finance-blue-light">Apply Now</Button>
+            <Link to="/" className="text-gray-700 hover:text-finance-blue font-medium">{t('home')}</Link>
+            <Link to="/about-us" className="text-gray-700 hover:text-finance-blue font-medium">{t('aboutUs')}</Link>
+            <Link to="/contact-us" className="text-gray-700 hover:text-finance-blue font-medium">{t('contactUs')}</Link>
+            <Button className="bg-finance-blue hover:bg-finance-blue-light">{t('applyNow')}</Button>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-4">
+            <LanguageSwitcher />
             <Button variant="ghost" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               <Menu className="h-6 w-6" />
             </Button>
@@ -41,23 +46,23 @@ const Navbar = () => {
                 className="text-gray-700 hover:text-finance-blue font-medium px-4 py-2 rounded-md hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Home
+                {t('home')}
               </Link>
               <Link 
                 to="/about-us" 
                 className="text-gray-700 hover:text-finance-blue font-medium px-4 py-2 rounded-md hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                About Us
+                {t('aboutUs')}
               </Link>
               <Link 
                 to="/contact-us" 
                 className="text-gray-700 hover:text-finance-blue font-medium px-4 py-2 rounded-md hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Contact Us
+                {t('contactUs')}
               </Link>
-              <Button className="bg-finance-blue hover:bg-finance-blue-light mx-4">Apply Now</Button>
+              <Button className="bg-finance-blue hover:bg-finance-blue-light mx-4">{t('applyNow')}</Button>
             </div>
           </div>
         )}

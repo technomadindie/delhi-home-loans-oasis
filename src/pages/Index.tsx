@@ -6,28 +6,31 @@ import HeroSection from "@/components/HeroSection";
 import FeatureCard from "@/components/FeatureCard";
 import LoanCalculator from "@/components/LoanCalculator";
 import PartnerLogos from "@/components/PartnerLogos";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
+  const { t } = useLanguage();
+  
   const features = [
     {
       icon: <Home className="h-6 w-6" />,
-      title: "Competitive Rates",
-      description: "Access to the lowest interest rates from top banks and NBFCs in Delhi-NCR.",
+      titleKey: "competitiveRates",
+      descriptionKey: "competitiveRatesDesc",
     },
     {
       icon: <CheckCircle className="h-6 w-6" />,
-      title: "Quick Approval",
-      description: "Fast and efficient loan approval process with minimal documentation.",
+      titleKey: "quickApproval",
+      descriptionKey: "quickApprovalDesc",
     },
     {
       icon: <BarChart3 className="h-6 w-6" />,
-      title: "Expert Guidance",
-      description: "Our financial experts will guide you through every step of the loan process.",
+      titleKey: "expertGuidance",
+      descriptionKey: "expertGuidanceDesc",
     },
     {
       icon: <Shield className="h-6 w-6" />,
-      title: "Secure Process",
-      description: "Your data is protected with bank-grade security throughout the application.",
+      titleKey: "secureProcess",
+      descriptionKey: "secureProcessDesc",
     },
   ];
 
@@ -41,9 +44,9 @@ const Index = () => {
         {/* Features Section */}
         <section className="py-20 px-4">
           <div className="container mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-finance-blue">Why Choose Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-finance-blue">{t('whyChooseUs')}</h2>
             <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-              We offer the best home loan solutions tailored to your needs with exceptional service and support.
+              {t('whyChooseUsSub')}
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -51,8 +54,8 @@ const Index = () => {
                 <FeatureCard 
                   key={index}
                   icon={feature.icon}
-                  title={feature.title}
-                  description={feature.description}
+                  titleKey={feature.titleKey}
+                  descriptionKey={feature.descriptionKey}
                 />
               ))}
             </div>
@@ -65,10 +68,10 @@ const Index = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-finance-blue">
-                  Calculate Your Home Loan EMI
+                  {t('calculateEmi')}
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  Use our home loan calculator to estimate your monthly EMI payments. Adjust the loan amount, interest rate, and tenure to see how it affects your payments.
+                  {t('calculateEmiDesc')}
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-center">
@@ -107,7 +110,7 @@ const Index = () => {
                 href="/contact-us" 
                 className="bg-white text-finance-blue hover:bg-gray-100 px-8 py-3 rounded-md font-semibold transition-colors"
               >
-                Contact Us Now
+                {t('contactUs')} 
               </a>
               <a 
                 href="tel:+919876543210" 
